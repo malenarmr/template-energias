@@ -13,11 +13,11 @@ export function Navbar() {
     { href: "/", label: "Inicio" },
     { href: "/alquiler", label: "Alquiler" },
     { href: "/venta", label: "Venta" },
-    { href: "/services", label: "Services" },
+    { href: "/mantenimiento", label: "Mantenimiento" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50  backdrop-blur-sm ">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center">
