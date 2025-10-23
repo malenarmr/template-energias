@@ -9,19 +9,23 @@ const slides = [
     title: "Venta",
     subtitle: "Grupos Electrógenos",
     description: "Equipos nuevos de las mejores marcas del mercado",
-    image: "/grupo.png",
+    button: "consulta por el generador que se adapta a tus necesidades",
+    image: "/venta-home-2.png",
   },
   {
     title: "Alquiler",
     subtitle: "Soluciones Temporales",
     description: "Energía confiable para eventos y proyectos",
-    image: "/grupo.png",
+    button: "Consulta por el generador que se adapta a tus necesidades ",
+    image: "/alquiler-home.png",
   },
   {
-    title: "Mantenimiento",
+    title: "Mantenimiento y reparación",
     subtitle: "Servicio Técnico",
-    description: "Reparaciones, instalaciones y service preventivo",
-    image: "/grupo.png",
+    button: "consulta por el servicio que se adapta a tus necesidades",
+    description:
+      "Reparaciones, abonos, instalaciones, services preventivos y correctivos.",
+    image: "/mantenimiento-home.png",
   },
 ];
 
@@ -71,7 +75,7 @@ export function HeroSlider() {
                       className="bg-transparent text-white hover:bg-transparent font-semibold text-sm md:text-sm lg:text-base px-6 md:px-6 lg:px-8 py-5 md:py-5 lg:py-6 rounded-full border-2 border-white w-full sm:w-auto md:whitespace-nowrap"
                     >
                       <span className="hidden sm:inline">
-                        ENCUENTRA EL GENERADOR QUE SE ADAPTA A TUS NECESIDADES
+                        {slide.button.toUpperCase()}
                       </span>
                       <span className="sm:hidden">ENCUENTRA TU GENERADOR</span>
                     </Button>
@@ -85,7 +89,8 @@ export function HeroSlider() {
                   <img
                     src={slide.image || "/placeholder.svg"}
                     alt={slide.title}
-                    className="absolute sm-left-10 top-1/2 -translate-y-1/2 w-[100vw] object-contain drop-shadow-2xl"
+                    style={{ filter: "drop-shadow(0px 4px 60px #ffffff60)" }}
+                    className="absolute sm-left-10 top-1/2 -translate-y-1/2 w-[40vw] object-contain"
                   />
                 </div>
               </div>
@@ -104,7 +109,7 @@ export function HeroSlider() {
 
       <Button
         onClick={nextSlide}
-        className="absolute right-4 md:bg-red-500 md:right-1 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 transition-colors"
+        className="absolute right-4 md:right-1 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-2 transition-colors"
         aria-label="Next slide"
       >
         <ChevronRight size={24} className="w-5 h-5 md:w-7 md:h-7 text-white" />

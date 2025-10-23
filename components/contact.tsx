@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { abrirEmail, abrirWhatsApp } from "@/utils/redirectRedes";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -54,34 +55,51 @@ export default function ContactForm() {
                 Contacto
               </h2>
               <p className="text-lg text-cyan-100 text-pretty leading-relaxed">
-                ¿Tienes alguna pregunta o necesitas más información? Estamos
-                aquí para ayudarte. Completa el formulario y nos pondremos en
-                contacto contigo lo antes posible.
+                ¿Tenés alguna pregunta o necesitás más información? Estamos acá
+                para ayudarte. Completá el formulario y nos pondremos en
+                contacto con vos lo antes posible.
               </p>
             </div>
 
             <div className="space-y-6 pt-4">
-              <div className="flex items-start gap-4">
+              <div
+                className="flex items-center gap-4 cursor-pointer hover:text-white
+                hover:bg-white/10 hover:backdrop-blur-sm transition-colors p-1 rounded-[30px]"
+                onClick={() => abrirEmail(`${process.env.NEXT_PUBLIC_EMAIL}`)}
+              >
                 <div className="rounded-full bg-white/10 p-3 backdrop-blur-sm">
                   <Mail className="h-6 w-6 text-cyan-300" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Email</h3>
-                  <p className="text-cyan-100">info@4energias.com</p>
+                  <p className="text-cyan-100">
+                    {process.env.NEXT_PUBLIC_EMAIL}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="rounded-full bg-white/10 p-3 backdrop-blur-sm">
+              <div
+                className="flex items-center gap-4 cursor-pointer hover:text-white
+                hover:bg-white/10 hover:backdrop-blur-sm transition-colors p-1 rounded-[20px]"
+                onClick={() =>
+                  abrirWhatsApp(`${process.env.NEXT_PUBLIC_WHATSAPP}`)
+                }
+              >
+                <div className="rounded-full bg-white/10 p-3 backdrop-blur-sm ">
                   <Phone className="h-6 w-6 text-cyan-300" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Teléfono</h3>
-                  <p className="text-cyan-100">+54 11 1234-5678</p>
+                  <p className="text-cyan-100">
+                    {process.env.NEXT_PUBLIC_WHATSAPP_RENDER}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              <div
+                className="flex items-center gap-4 hover:text-white
+                 p-1 "
+              >
                 <div className="rounded-full bg-white/10 p-3 backdrop-blur-sm">
                   <MapPin className="h-6 w-6 text-cyan-300" />
                 </div>
@@ -166,7 +184,7 @@ export default function ContactForm() {
                     required
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Cuéntanos cómo podemos ayudarte..."
+                    placeholder="Contanos cómo podemos ayudarte..."
                     rows={5}
                     className="resize-none border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                   />

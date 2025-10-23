@@ -17,32 +17,32 @@ const services = [
     description:
       "Servicio de reparación especializado para todo tipo de grupos electrógenos. Diagnóstico preciso y soluciones efectivas.",
     icon: Wrench,
-    color: "#336680",
-    textColor: "#fff",
+    color: "#fff",
+    textColor: "#0D1436",
   },
   {
     title: "Service",
     description:
       "Mantenimiento preventivo programado para garantizar el óptimo funcionamiento y prolongar la vida útil de tus equipos.",
     icon: CalendarCog,
-    color: "#4D8CA6",
-    textColor: "#fff",
+    color: "#fff",
+    textColor: "#0D1436",
   },
   {
     title: "Instalaciones",
     description:
       "Instalación profesional de grupos electrógenos con todos los permisos y certificaciones necesarias.",
     icon: PlugZap,
-    color: "#66BFFF",
-    textColor: "#000000",
+    color: "#fff",
+    textColor: "#0D1436",
   },
   {
     title: "Abonos",
     description:
       "Planes de mantenimiento con abono mensual que incluyen revisiones periódicas, repuestos y atención prioritaria.",
     icon: CalendarCheck,
-    color: "#99D6FF",
-    textColor: "#000000",
+    color: "#fff",
+    textColor: "#0D1436",
   },
 ];
 
@@ -65,38 +65,48 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8">
             {services.map((service, index) => {
               const Icon = service.icon;
+
               return (
-                <Card
+                <div
                   key={index}
-                  style={{ backgroundColor: service.color }}
-                  className="overflow-hidden border-2 hover:border-gray-500 transition-colors shadow-[2px_4px_4px_rgba(0,0,0,0.2)]"
+                  style={{
+                    backgroundColor: service.color,
+                    borderColor: service.textColor,
+                    borderWidth: "2px",
+                    borderStyle: "solid",
+
+                    boxShadow: `0 4px 10px ${service.textColor}`,
+                  }}
+                  className={` w-[100%] aspect-9/10 sm:aspect-9/12 lg:aspect-9/18 xl:aspect-9/12 rounded-[4rem] hover:scale-105 transition-transform duration-300 relative overflow-visible mx-auto flex justify-between flex-col
+           `}
                 >
                   <div
-                    className={`  border-b border-gray-300 relative h-64 bg-[${service.color}] flex items-center justify-center`}
+                    className={`relative h-64 bg-[${service.textColor}] flex items-center justify-center h-[50%] lg:h-[40%]`}
                   >
                     <Icon
-                      size={200}
-                      className="text-white drop-shadow-[2px_4px_4px_rgba(0,0,0,0.8)]"
+                      className="w-50 h-50 sm:w-32 md:w-40 md:h-40 lg:w-30 lg:h-30"
+                      style={{
+                        color: service.textColor,
+                        // filter: `drop-shadow(2px 4px 4px ${service.textColor})`,
+                      }}
                     />
                   </div>
-                  <CardContent className="p-6">
-                    <h3
-                      className="text-2xl font-semibold mb-3"
-                      style={{ color: service.textColor }}
-                    >
+                  <div
+                    className="flex flex-col items-center justify-around h-[50%] lg:h-[60%] text-center p-5 "
+                    style={{ color: service.textColor }}
+                  >
+                    <h3 className="text-2xl lg:text-xl font-bold uppercase leading-tight">
                       {service.title}
                     </h3>
-                    <p
-                      className="text-muted-foreground font-bold mb-6 leading-relaxed"
-                      style={{ color: service.textColor }}
-                    >
+
+                    <p className="text-[1.1rem] lg:text-[1rem] font-bold mt-2">
                       {service.description}
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               );
             })}
           </div>
@@ -109,16 +119,16 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[500px] rounded-lg overflow-hidden">
               <img
-                src="/generator-preventive-maintenance.jpg"
+                src="/instalaciones.jpg"
                 alt="Mantenimiento preventivo"
-                className="w-full h-full object-cover"
+                className="w-full h-full contain object-center"
               />
             </div>
             <div className="relative h-[500px] rounded-lg overflow-hidden">
               <img
-                src="/generator-preventive-maintenance.jpg"
+                src="/reparaciones.jpg"
                 alt="Mantenimiento preventivo"
-                className="w-full h-full object-cover"
+                className="w-full h-full contain object-center"
               />
             </div>
           </div>

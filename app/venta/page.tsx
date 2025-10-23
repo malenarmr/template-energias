@@ -6,22 +6,28 @@ const salesCategories = [
   {
     title: "Estacionarios",
     description: "Ideal para industrias, consorcios, hospitales y fábricas.",
-    image: "/stationary-generator-for-sale.jpg",
+    image: "/estacionarios.png",
     power: "Potencias de 20 kVA a 1.000 kVA",
+    borderColor: "#fff",
+    background: "#0D1436",
   },
   {
     title: "Portátiles",
     description:
       "Grupos electrógenos portátiles de alta calidad para uso doméstico y comercial.",
-    image: "/portable-generator-for-sale.jpg",
+    image: "/portatiles.png",
     power: "Potencias de 3000W a 20 KVA",
+    borderColor: "#0D1436",
+    background: "#fff",
   },
   {
     title: "A Gas",
     description:
-      " Son ideales para uso domiciliario, como ventaja se puede destacar su bajo costo de mantenimiento , su autonomía permanente y sus bajas emisiones, ideal para casas",
-    image: "/gas-generator.jpg",
+      "Ideales para uso domiciliario, destacan por bajo mantenimiento, autonomía y bajas emisiones",
+    image: "/gas.png",
     power: "Potencias de 8.000W en adelante.",
+    borderColor: "#fff",
+    background: "#0D1436",
   },
 ];
 
@@ -46,70 +52,49 @@ export default function VentaPage() {
       {/* Products Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          {/* <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-balance">Nuestra Gama de Productos</h2>
-            <p className="text-xl text-muted-foreground font-light max-w-3xl mx-auto text-pretty">
-              Encuentra el grupo electrógeno perfecto para tus necesidades
-            </p>
-          </div> */}
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
             {salesCategories.map((category, index) => (
-              <Card
+              <div
                 key={index}
-                className="overflow-hidden border-2 hover:border-primary transition-colors"
+                style={{
+                  backgroundColor: category.background,
+                  borderColor: category.borderColor,
+                  borderWidth: "2px",
+                  borderStyle: "solid",
+                }}
+                className={`aspect-[10/16] lg:aspect-[9/16] xl:aspect-[9/14] md:aspect-[8/14] md:w-[90%] w-[90%] rounded-[6rem] hover:scale-105 transition-transform duration-300 relative overflow-visible mx-auto
+            md:last:col-span-2 md:last:mx-auto md:last:max-w-[45%] lg:last:col-span-1 lg:last:max-w-none`}
               >
-                <div className="relative h-64">
+                {/* Imagen centrada y sobresaliente */}
+                <div
+                  className="absolute left-1/2 -translate-x-1/2 md:top-5 lg:top-5
+           xl:top-15 w-[110%] top-10 h-[50%] flex justify-center z-20 items-center"
+                >
                   <img
                     src={category.image || "/placeholder.svg"}
                     alt={category.title}
-                    className="w-full h-full object-cover"
+                    className="object-contain w-full h-auto md:h-auto md:w-full drop-shadow-[0_20px_20px_rgba(255,255,255,0.2)]"
                   />
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-semibold mb-3">
+
+                {/* Contenido del card */}
+                <div
+                  className="h-full w-full flex flex-col items-center justify-end text-center pb-[20%] px-5 sm:pb-15 lg:pb-10 xl:pb-15 z-10"
+                  style={{ color: category.borderColor }}
+                >
+                  <h3 className="text-[1.5rem] font-bold uppercase leading-tight">
                     {category.title}
                   </h3>
-                  <p className="text-primary font-semibold mb-4">
-                    {category.power}
-                  </p>
-                  <p className="text-muted-foreground  mb-6 leading-relaxed">
+                  <p className="font-bold text-xl mb-2">{category.power}</p>
+                  <p className="text-sm font-semibold">
                     {category.description}
                   </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Brands Section */}
-      {/* <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-balance">
-              Trabajamos con las Mejores Marcas
-            </h2>
-            <p className="text-xl text-muted-foreground font-light max-w-3xl mx-auto text-pretty">
-              Disponemos de un amplio rango de potencias, motores y modelos
-              distintos
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-            {brands.map((brand, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg p-8 flex items-center justify-center h-32 border-2 hover:border-primary transition-colors"
-              >
-                <span className="text-2xl font-semibold text-gray-700">
-                  {brand}
-                </span>
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Features Section */}
       <section className="py-20 bg-white">

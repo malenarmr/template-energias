@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-primary via-blue-700 to-gray-900 pt-20">
+    <main className="min-h-screen bg-gradient-to-br from-primary via-blue-800 to-gray-300 pt-20">
       <HeroSlider />
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
@@ -19,15 +19,14 @@ export default function HomePage() {
           <section className="mb-16">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 text-balance">
-                Venta, instalación y mantenimiento de los{" "}
-                <span className="text-primary">
-                  grupos electrógenos más modernos y avanzados
-                </span>
+                Ofrecemos soluciones energéticas personalizadas
+                <br /> para
+                <strong> cada proyecto</strong>
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground font-light max-w-3xl mx-auto text-pretty">
-                Ofreciendo soluciones energéticas personalizadas para cada
-                proyecto
-              </p>
+              {/* <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
+                Ofrecemos soluciones energéticas personalizadas para{" "}
+                <strong>cada proyecto</strong>
+              </p> */}
               {/* <Button
                 size="lg"
                 className="mt-6 bg-primary hover:bg-primary/90 text-white"
@@ -37,7 +36,7 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16">
-              <Link href="/services">
+              <Link href="/mantenimiento">
                 <Card className="border-2 hover:border-primary transition-all hover:shadow-lg cursor-pointer h-full bg-gray-50 rounded-3xl">
                   <CardContent className="p-8 text-center">
                     <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">

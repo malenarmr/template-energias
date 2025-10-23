@@ -1,6 +1,8 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { Instagram, Facebook, Linkedin, Mail } from "lucide-react";
+import { abrirEmail, abrirWhatsApp } from "@/utils/redirectRedes";
 
 export function Footer() {
   return (
@@ -26,7 +28,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/alquiler"
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors"
                 >
                   Alquiler
                 </Link>
@@ -34,15 +36,15 @@ export function Footer() {
               <li>
                 <Link
                   href="/venta"
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors"
                 >
                   Venta
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/services"
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  href="/mantenimiento"
+                  className="text-gray-400 hover:text-white transition-colors"
                 >
                   Mantenimiento
                 </Link>
@@ -53,8 +55,20 @@ export function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Contacto</h3>
             <ul className="space-y-2 font-light text-gray-400">
-              <li>info@nuevasenergias.com</li>
-              <li>+54 11 1234-5678</li>
+              <li
+                className="cursor-pointer hover:text-white transition-colors"
+                onClick={() => abrirEmail(`${process.env.NEXT_PUBLIC_EMAIL}`)}
+              >
+                <a>{process.env.NEXT_PUBLIC_EMAIL}</a>
+              </li>
+              <li
+                className="cursor-pointer hover:text-white transition-colors"
+                onClick={() =>
+                  abrirWhatsApp(`${process.env.NEXT_PUBLIC_WHATSAPP}`)
+                }
+              >
+                {process.env.NEXT_PUBLIC_WHATSAPP_RENDER}
+              </li>
             </ul>
           </div>
 
@@ -62,30 +76,42 @@ export function Footer() {
             <h3 className="font-semibold text-lg mb-4">Seguinos</h3>
             <div className="flex gap-4">
               <a
-                href="#"
-                className="text-gray-400 hover:text-primary transition-colors"
+                href="https://www.instagram.com/nuevas.energias.ar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={24} />
               </a>
               <a
-                href="#"
-                className="text-gray-400 hover:text-primary transition-colors"
-                aria-label="Facebook"
+                href="https://www.instagram.com/nuevas.energias.ar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Instagram"
               >
                 <Facebook size={24} />
               </a>
               <a
-                href="#"
-                className="text-gray-400 hover:text-primary transition-colors"
-                aria-label="LinkedIn"
+                href="https://www.linkedin.com/in/kilowatt-s-a-nuevas-energ%C3%ADas-6690b3255/overlay/about-this-profile/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Instagram"
               >
                 <Linkedin size={24} />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-primary transition-colors"
-                aria-label="Email"
+                onClick={(e) => {
+                  e.preventDefault();
+                  abrirEmail(`${process.env.NEXT_PUBLIC_EMAIL}`);
+                }}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Instagram"
               >
                 <Mail size={24} />
               </a>
