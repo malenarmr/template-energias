@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import ModalContact from "@/components/modalContact";
 import { Check } from "lucide-react";
 import { useState } from "react";
+import ButtonFlotante from "@/components/buttonFlotante";
 
 const salesCategories = [
   {
@@ -159,6 +160,7 @@ export default function VentaPage() {
         </div>
       </section>
       <ModalContact isOpen={isModalOpen} onOpenChange={setIsModalOpen} />
+      <ButtonFlotante />
     </main>
   );
 }

@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import ModalContact from "@/components/modalContact";
+import ButtonFlotante from "@/components/buttonFlotante";
 
 const rentalCategories = [
   {
@@ -29,7 +30,7 @@ const rentalCategories = [
     description:
       " Portátiles con mástiles extensibles, luminarias LED de bajo consumo para. Ideales para obras  obras, eventos, e iluminación de emergencia.",
     image: "/torres(23).png",
-    power: "Potencia de 18.000W a 4.000W",
+    power: "Potencia de 4.000W a 18.000W",
     borderColor: "#fff",
     background: "#0D1436",
   },
@@ -47,7 +48,7 @@ export default function AlquilerPage() {
             Alquiler de Equipos
           </h1>
           <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto text-pretty">
-            Contamos equipos que se ajustan a cada necesidad
+            Contamos con equipos que se ajustan a cada necesidad
           </p>
         </div>
       </section>
@@ -166,6 +167,7 @@ export default function AlquilerPage() {
         </div>
       </section>
       <ModalContact isOpen={isModalOpen} onOpenChange={setIsModalOpen} />
+      <ButtonFlotante />
     </main>
   );
 }

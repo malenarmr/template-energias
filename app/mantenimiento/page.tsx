@@ -14,6 +14,7 @@ import {
 import { text } from "stream/consumers";
 import ModalContact from "@/components/modalContact";
 import { useState } from "react";
+import ButtonFlotante from "@/components/buttonFlotante";
 
 const services = [
   {
@@ -159,6 +160,7 @@ export default function ServicesPage() {
         </div>
       </section>
       <ModalContact isOpen={isModalOpen} onOpenChange={setIsModalOpen} />
+      <ButtonFlotante />
     </main>
   );
 }
