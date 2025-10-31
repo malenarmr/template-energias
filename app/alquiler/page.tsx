@@ -1,5 +1,9 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import ModalContact from "@/components/modalContact";
 
 const rentalCategories = [
   {
@@ -25,13 +29,15 @@ const rentalCategories = [
     description:
       " Portátiles con mástiles extensibles, luminarias LED de bajo consumo para. Ideales para obras  obras, eventos, e iluminación de emergencia.",
     image: "/torres(23).png",
-    power: "Potencia de 4000w",
+    power: "Potencia de 18.000W a 4.000W",
     borderColor: "#fff",
     background: "#0D1436",
   },
 ];
 
 export default function AlquilerPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <main className="pt-20">
       {/* Hero Section */}
@@ -153,11 +159,13 @@ export default function AlquilerPage() {
             size="lg"
             variant="secondary"
             className="bg-white text-primary hover:bg-gray-100"
+            onClick={() => setIsModalOpen(true)}
           >
             Contactar ahora
           </Button>
         </div>
       </section>
+      <ModalContact isOpen={isModalOpen} onOpenChange={setIsModalOpen} />
     </main>
   );
 }

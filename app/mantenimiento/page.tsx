@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +12,8 @@ import {
   PlugZap,
 } from "lucide-react";
 import { text } from "stream/consumers";
+import ModalContact from "@/components/modalContact";
+import { useState } from "react";
 
 const services = [
   {
@@ -47,6 +51,8 @@ const services = [
 ];
 
 export default function ServicesPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <main className="pt-20">
       {/* Hero Section */}
@@ -63,12 +69,11 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="pt-20">
+        <div className="container mx-auto px-[3rem] lg:px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8">
             {services.map((service, index) => {
               const Icon = service.icon;
-
               return (
                 <div
                   key={index}
@@ -80,7 +85,7 @@ export default function ServicesPage() {
 
                     boxShadow: `0 4px 10px ${service.textColor}`,
                   }}
-                  className={` w-[100%] aspect-9/10 sm:aspect-9/12 lg:aspect-9/18 xl:aspect-9/12 rounded-[4rem] hover:scale-105 transition-transform duration-300 relative overflow-visible mx-auto flex justify-between flex-col
+                  className={` w-[100%] aspect-9/11 sm:aspect-9/12 lg:aspect-9/18 xl:aspect-9/12 rounded-[4rem] hover:scale-105 transition-transform duration-300 relative overflow-visible mx-auto flex justify-between flex-col
            `}
                 >
                   <div
@@ -114,59 +119,26 @@ export default function ServicesPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-gray-50">
+      <section className=" bg-gray-50 my-[3rem] lg:my-0 xl:my-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[500px] rounded-lg overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center rounded-2xl overflow-hidden">
+            <div className="relative h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden">
               <img
                 src="/instalaciones.jpg"
                 alt="Mantenimiento preventivo"
-                className="w-full h-full contain object-center"
+                className="w-full h-full object-contain object-center"
               />
             </div>
-            <div className="relative h-[500px] rounded-lg overflow-hidden">
+            <div className="relative h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden">
               <img
                 src="/reparaciones.jpg"
                 alt="Mantenimiento preventivo"
-                className="w-full h-full contain object-center"
+                className="w-full h-full object-contain object-center"
               />
             </div>
           </div>
         </div>
       </section>
-
-      {/* Emergency Service */}
-      {/* <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-br from-primary via-blue-600 to-blue-700 rounded-2xl p-12 text-white text-center">
-            <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-balance">
-              SECCIÓN DISPONIBLE
-            </h2>
-            <p className="text-xl font-light mb-8 max-w-2xl mx-auto text-pretty">
-              Disponemos de un equipo técnico de guardia para atender cualquier
-              emergencia con tus grupos electrógenos
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="bg-white text-primary hover:bg-gray-100"
-              >
-                Llamar ahora
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10 bg-transparent"
-              >
-                WhatsApp
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-primary via-blue-600 to-blue-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-balance">
@@ -180,11 +152,13 @@ export default function ServicesPage() {
             size="lg"
             variant="secondary"
             className="bg-white text-primary hover:bg-gray-100"
+            onClick={() => setIsModalOpen(true)}
           >
             Contactar ahora
           </Button>
         </div>
       </section>
+      <ModalContact isOpen={isModalOpen} onOpenChange={setIsModalOpen} />
     </main>
   );
 }

@@ -1,6 +1,9 @@
-import { Card, CardContent } from "@/components/ui/card";
+"use client";
+
 import { Button } from "@/components/ui/button";
+import ModalContact from "@/components/modalContact";
 import { Check } from "lucide-react";
+import { useState } from "react";
 
 const salesCategories = [
   {
@@ -31,9 +34,9 @@ const salesCategories = [
   },
 ];
 
-const brands = ["Baudouin", "Doosan", "Perkins", "Cummins", "Volvo Penta"];
-
 export default function VentaPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <main className="pt-20">
       {/* Hero Section */}
@@ -97,19 +100,20 @@ export default function VentaPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[500px] rounded-lg overflow-hidden">
+          {/* <CHANGE> Changed grid to flex with flex-col-reverse on mobile, grid on desktop */}
+          <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-12 items-center">
+            <div className="relative h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden">
               <img
-                src="/industrial-generator-showroom.jpg"
+                src="/ventas.png"
                 alt="Showroom"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-bottom"
               />
             </div>
 
             <div>
-              <h2 className="text-4xl md:text-5xl font-semibold mb-6 text-balance">
+              <h2 className="text-4xl md:text-3xl font-semibold mb-6 text-balance">
                 ¿Por qué comprar con nosotros?
               </h2>
               <div className="space-y-4">
@@ -130,12 +134,6 @@ export default function VentaPage() {
                   </div>
                 ))}
               </div>
-              {/* <Button
-                size="lg"
-                className="mt-8 bg-primary hover:bg-primary/90 text-white"
-              >
-                Solicitar información
-              </Button> */}
             </div>
           </div>
         </div>
@@ -154,11 +152,13 @@ export default function VentaPage() {
             size="lg"
             variant="secondary"
             className="bg-white text-primary hover:bg-gray-100"
+            onClick={() => setIsModalOpen(true)}
           >
             Contactar ahora
           </Button>
         </div>
       </section>
+      <ModalContact isOpen={isModalOpen} onOpenChange={setIsModalOpen} />
     </main>
   );
 }
