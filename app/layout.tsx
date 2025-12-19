@@ -7,6 +7,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Suspense } from "react";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
@@ -32,7 +33,6 @@ export const metadata: Metadata = {
   category: "Servicios",
   classification: "Business",
 
-  // Open Graph para redes sociales
   openGraph: {
     title: "Nuevas Energías - Grupos Electrógenos | Buenos Aires",
     description:
@@ -51,7 +51,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 
-  // Twitter Cards
   twitter: {
     card: "summary_large_image",
     title: "Nuevas Energías - Grupos Electrógenos | Buenos Aires",
@@ -59,18 +58,17 @@ export const metadata: Metadata = {
       "Alquiler, venta y mantenimiento de grupos electrógenos en Buenos Aires.",
     images: [`${process.env.NEXT_PUBLIC_SITE_URL}/twitter-image.png`],
   },
-  // Datos estructurados básicos
+
   other: {
     "geo.region": "AR-C",
     "geo.placename": "Buenos Aires",
-    "geo.position": "-34.6118;-58.3960", // Coordenadas de Buenos Aires
+    "geo.position": "-34.6118;-58.3960",
     ICBM: "-34.6118, -58.3960",
     "business:contact_data:locality": "Buenos Aires",
     "business:contact_data:region": "CABA",
     "business:contact_data:country_name": "Argentina",
   },
 
-  // Robots y indexación
   robots: {
     index: true,
     follow: true,
@@ -89,21 +87,12 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
 
-  // // Verificación de Google
-  // verification: {
-  //   google: "tu-codigo-de-verificacion-google",
-  //   // yandex: "codigo-yandex",
-  //   // bing: "codigo-bing",
-  // },
-
-  // Configuración de viewport
   viewport: {
     width: "device-width",
     initialScale: 1,
     maximumScale: 1,
   },
 
-  // Canonical URL
   alternates: {
     canonical: process.env.NEXT_PUBLIC_SITE_URL,
   },
@@ -116,7 +105,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MKNG7HV');
+          `}
+        </Script>
+      </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MKNG7HV"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+
         <Suspense fallback={<div>Loading...</div>}>
           <Navbar />
           {children}
